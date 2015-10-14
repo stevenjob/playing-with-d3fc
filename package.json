@@ -1,0 +1,24 @@
+{
+  "name": "d3fc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenjob/playing-with-d3fc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stevenjob/playing-with-d3fc/issues"
+  },
+  "homepage": "https://github.com/stevenjob/playing-with-d3fc#readme"
+}
