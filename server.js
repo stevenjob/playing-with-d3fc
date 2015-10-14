@@ -1,9 +1,13 @@
-//var initDb = require("./server/db/initialise-db");
-var server = require("./server/server");
 var express = require("express");
 
-//initDb(function(db) {
-    server(process.env.PORT || 8080, function() {
-        console.log("Server listening");
-    });
-//});
+var server = require("./server/server");
+
+app = require("express")();
+
+app.use(express.static("public"));
+
+app.get("/hello", function(req, res) {
+    res.send("Hello");
+});
+
+app.listen(8080);
