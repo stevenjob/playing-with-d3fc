@@ -95,7 +95,7 @@ function renderChart(data) {
     volumeContainer.enter()
         .append('g')
         .attr({
-            'class': 'volume',
+            'class': 'volume'
         })
         .layout({
             position: 'absolute',
@@ -105,7 +105,6 @@ function renderChart(data) {
             left: 0
         });
 
-    var layout = fc.layout();
     container.layout();
 
     var volumeScale = d3.scale.linear()
@@ -188,7 +187,7 @@ function renderChart(data) {
     var verticalLines = fc.annotation.line()
         .orient('vertical')
         .value(function(d) { return d.date; })
-        .label(function(d) { return ''; })
+        .label(function() { return ''; })
         .decorate(function(sel) {
             sel.enter()
                 .select('.bottom-handle')
@@ -235,7 +234,7 @@ function renderChart(data) {
         .yValue(function(d) { return d.volume; })
         .decorate(function(sel) {
             sel.select('path')
-                .style('stroke', function(d, i) {
+                .style('stroke', function(d) {
                     return d.close > d.open ? 'red' : 'green';
                 });
         });
