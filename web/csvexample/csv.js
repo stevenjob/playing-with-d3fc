@@ -111,14 +111,13 @@ function renderChart(data) {
     var volumeScale = d3.scale.linear()
         .domain([0, d3.max(data, function (d) { return Number(d.volume); })])
         .range([volumeContainer.layout('height'), 0]);
-
-    var discontinuity = fc.scale.discontinuity.tradedHours()
-        .trades(data.map(function(d) { return d.date; }));
+    //
+    //var discontinuity = fc.scale.discontinuity.tradedHours()
+    //    .trades(data.map(function(d) { return d.date; }));
 
     // add a time series components
     var chart = fc.chart.linearTimeSeries()
         .xDomain(fc.util.extent(data, 'date'))
-        .xDiscontinuityProvider(discontinuity)
         .yDomain(fc.util.extent(data, ['open', 'close']))
         .xTickFormat(dateFormat)
         .yTickFormat(priceFormat)
@@ -181,31 +180,9 @@ function renderChart(data) {
             renderLegend(data[data.length - 1]);
         });
 
-    // add vertical lines and bands
-    var tradingHourMarkers = discontinuity.orderedExtents()
-        .map(function(extent) {
-            var open = d3.time.day.floor(extent.start);
-            var close = d3.time.day.floor(extent.start);
-            open.setHours(9);
-            open.setMinutes(30);
-            close.setHours(16);
-            return [{
-                date: extent.start,
-                type: '#preMarket-1-1072d'
-            }, {
-                date: open,
-                type: '#activeDay-1-1072d'
-            }, {
-                date: close,
-                type: '#postMarket-1-1072d'
-            }];
-        });
-
-    var verticalLineData = [].concat.apply([], tradingHourMarkers);
-    var verticalBandData = d3.pairs(tradingHourMarkers);
 
     function verticalLineData() {
-        return [].concat.apply([], tradingHours());
+        return [].concat.apply([], true);
     }
 
     var verticalLines = fc.annotation.line()
